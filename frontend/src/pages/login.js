@@ -28,7 +28,7 @@ const Login = () => {
     try {
       const response = await authService.login(formData);
       console.log("Login successful:", response);
-      navigate("/dashboard");
+      navigate("/home");
     } catch (error) {
       setError(error.message || "Login failed. Please check your credentials.");
     } finally {

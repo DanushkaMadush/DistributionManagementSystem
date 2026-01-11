@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useEffect } from 'react';
 import { setupInterceptors } from './services/interceptors';
 import Login from './pages/login';
-// import Dashboard from './pages/Dashboard';
+import Home from './pages/home';
 
 function App() {
   useEffect(() => {
@@ -13,8 +13,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
       </Routes>
     </Router>
   );
