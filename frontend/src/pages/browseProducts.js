@@ -65,6 +65,10 @@ export default function Products() {
           <i className="bi bi-plus-circle me-2"></i>
           Add Product
         </button>
+        <button className="btn btn-info" onClick={handleAddProduct}>
+          <i class="bi bi-cart-plus"></i>
+          View Cart
+        </button>
       </div>
 
       <div className="row mb-4">
