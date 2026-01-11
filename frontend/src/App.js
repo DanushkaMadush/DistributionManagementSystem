@@ -3,20 +3,20 @@ import { useEffect } from 'react';
 import { setupInterceptors } from './services/interceptors';
 import Login from './pages/login';
 import Home from './pages/home';
-import Products from './pages/products';
-import Orders from './pages/orders';
-import Promotions from './pages/promotions';
-import Inventory from './pages/inventory';
+import Products from './pages/browseProducts';
+import Orders from './pages/myOrders';
+import Promotions from './pages/promotionsAndOffers';
+import Inventory from './pages/inventoryManagement';
 import StockTransfers from './pages/stockTransfers';
-import OrderFulfillment from './pages/orderFulfillment';
+import OrderFulfillment from './pages/orderFullfillment';
 import DeliveryScheduling from './pages/deliveryScheduling';
-import Deliveries from './pages/deliveries';
-import Billing from './pages/billing';
+import Deliveries from './pages/trackDeliveries';
+import Billing from './pages/billingAndInvoices';
 import Payments from './pages/payments';
 import Dashboard from './pages/dashboard';
 import Reports from './pages/reports';
-import AdminUsers from './pages/adminUsers';
-import AdminSettings from './pages/adminSettings';
+import AdminUsers from './pages/userManagement';
+import AdminSettings from './pages/systemSettings';
 
 function App() {
   useEffect(() => {
