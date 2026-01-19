@@ -10,7 +10,7 @@ const getAllProducts = async () => {
           ProductName,
           unitPrice,
           unitOfMeasure
-        FROM Product
+        FROM dbo.Product
         ORDER BY ProductName ASC
       `);
 
@@ -31,7 +31,7 @@ const getProductById = async (productId) => {
           ProductName,
           unitPrice,
           unitOfMeasure
-        FROM Product
+        FROM dbo.Product
         WHERE ProductId = @ProductId
       `);
 
@@ -50,7 +50,7 @@ const addProduct = async (product) => {
       .input("ProductName", sql.NVarChar(50), product.productName)
       .input("unitPrice", sql.Decimal(18, 2), product.unitPrice)
       .input("unitOfMeasure", sql.NVarChar(50), product.unitOfMeasure).query(`
-        INSERT INTO Product (ProductName, unitPrice, unitOfMeasure)
+        INSERT INTO dbo.Product (ProductName, unitPrice, unitOfMeasure)
         VALUES (@ProductName, @unitPrice, @unitOfMeasure);
         SELECT SCOPE_IDENTITY() AS ProductId;
       `);
@@ -71,7 +71,7 @@ const updateProductById = async (productId, product) => {
       .input("ProductName", sql.NVarChar(50), product.productName)
       .input("unitPrice", sql.Decimal(18, 2), product.unitPrice)
       .input("unitOfMeasure", sql.NVarChar(50), product.unitOfMeasure).query(`
-        UPDATE Product
+        UPDATE dbo.Product
         SET 
           ProductName = @ProductName,
           unitPrice = @unitPrice,
@@ -91,7 +91,7 @@ const deleteProduct = async (productId) => {
   try {
     const result = await pool.request().input("ProductId", sql.Int, productId)
       .query(`
-        DELETE FROM Product
+        DELETE FROM dbo.Product
         WHERE ProductId = @ProductId
       `);
 
