@@ -18,6 +18,7 @@ import Reports from './pages/reports';
 import AdminUsers from './pages/userManagement';
 import AdminSettings from './pages/systemSettings';
 import AddProduct from './pages/addProduct';
+import EditProduct from './pages/editProduct';
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />
+        <Route path="/products/edit/:productId" element={<EditProduct />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/promotions" element={<Promotions />} />
         <Route path="/inventory" element={<Inventory />} />
