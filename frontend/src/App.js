@@ -17,6 +17,7 @@ import Dashboard from './pages/dashboard';
 import Reports from './pages/reports';
 import AdminUsers from './pages/userManagement';
 import AdminSettings from './pages/systemSettings';
+import AddProduct from './pages/addProduct';
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/add" element={<AddProduct />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/promotions" element={<Promotions />} />
         <Route path="/inventory" element={<Inventory />} />
