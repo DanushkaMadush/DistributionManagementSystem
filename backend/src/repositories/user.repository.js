@@ -20,7 +20,7 @@ const createUser = async (user) => {
     .input("RDCId", sql.Int, user.rdcId)
     .input("Email", sql.NVarChar, user.email)
     .input("PasswordHash", sql.NVarChar, user.passwordHash).query(`
-      INSERT INTO Users
+      INSERT INTO dbo.Users
       (EmployeeId, Name, DOB, Department, Designation, Salary,
        DateOfJoin, ContactNo, Address, RDCId, Email, PasswordHash)
       VALUES

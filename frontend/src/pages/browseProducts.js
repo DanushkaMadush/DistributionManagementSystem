@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import productService from '../services/productService';
+import { hasAnyRole } from '../services/jwtService';
 
 export default function Products() {
   const navigate = useNavigate();
@@ -9,6 +10,9 @@ export default function Products() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Check if user has admin/manager/rdc/finance role
+  const canManageProducts = hasAnyRole(['Admin', 'RDC', 'Manager', 'FINANCE']);
 
   useEffect(() => {
     fetchProducts();
@@ -53,22 +57,35 @@ export default function Products() {
     alert(`Checking availability for ${product.ProductName}...`);
   };
 
+  const handleEditProduct = (product) => {
+    console.log('Edit product:', product);
+    navigate(`/products/edit/${product.ProductId}`);
+  };
+
   const handleAddProduct = () => {
     navigate('/products/add');
+  };
+
+  const handleViewCart = () => {
+    navigate('/cart');
   };
 
   return (
     <div className="container py-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>Browse Products</h3>
-        <button className="btn btn-success" onClick={handleAddProduct}>
-          <i className="bi bi-plus-circle me-2"></i>
-          Add Product
-        </button>
-        <button className="btn btn-info" onClick={handleAddProduct}>
-          <i class="bi bi-cart-plus"></i>
-          View Cart
-        </button>
+        <div className="d-flex gap-2">
+          {canManageProducts && (
+            <button className="btn btn-success" onClick={handleAddProduct} style={{ marginRight: '10px' }}>
+              <i className="bi bi-plus-circle me-2"></i>
+              Add Product
+            </button>
+          )}
+          <button className="btn btn-info" onClick={handleViewCart}>
+            <i className="bi bi-cart-plus me-2"></i>
+            View Cart
+          </button>
+        </div>
       </div>
 
       <div className="row mb-4">
@@ -144,6 +161,15 @@ export default function Products() {
                           <i className="bi bi-box-seam me-2"></i>
                           Check Availability
                         </button>
+                        {canManageProducts && (
+                          <button
+                            className="btn btn-outline-warning"
+                            onClick={() => handleEditProduct(product)}
+                          >
+                            <i className="bi bi-pencil-square me-2"></i>
+                            Edit Product
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
