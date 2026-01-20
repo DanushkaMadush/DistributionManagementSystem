@@ -27,7 +27,7 @@ const roleGroups = {
   ],
   ADMIN: [
     { label: 'User Management', path: '/admin/users' },
-    { label: 'System Settings', path: '/admin/settings' },
+    // { label: 'System Settings', path: '/admin/settings' },
   ],
 };
 
