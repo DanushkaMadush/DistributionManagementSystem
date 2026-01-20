@@ -10,8 +10,8 @@ const roleGroups = {
   ],
   RDC: [
     { label: 'Inventory Management', path: '/inventory' },
-    { label: 'Stock Transfers', path: '/stock-transfers' },
-    { label: 'Order Fulfillment', path: '/order-fulfillment' },
+    { label: 'View Stocks', path: '/stock-transfers' },
+    // { label: 'Order Fulfillment', path: '/order-fulfillment' },
   ],
   LOGISTICS: [
     { label: 'Delivery Scheduling', path: '/delivery-scheduling' },
