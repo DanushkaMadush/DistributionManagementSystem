@@ -1,7 +1,7 @@
-const { getPool, sql } = require('../config/db');
+const { connectDB, sql } = require('../config/db');
 
 const getUserWithRolesByEmail = async (email) => {
-  const pool = await getPool(process.env.USER_DB);
+  const pool = await connectDB();
 
   const result = await pool.request()
     .input('Email', sql.NVarChar, email)

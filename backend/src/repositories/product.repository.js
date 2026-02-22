@@ -1,7 +1,7 @@
-const { getPool, sql } = require("../config/db");
+const { connectDB, sql } = require("../config/db");
 
 const getAllProducts = async () => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await connectDB();
 
   try {
     const result = await pool.request().query(`
@@ -21,7 +21,7 @@ const getAllProducts = async () => {
 };
 
 const getProductById = async (productId) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool.request().input("ProductId", sql.Int, productId)
@@ -42,7 +42,7 @@ const getProductById = async (productId) => {
 };
 
 const addProduct = async (product) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool
@@ -62,7 +62,7 @@ const addProduct = async (product) => {
 };
 
 const updateProductById = async (productId, product) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool
@@ -86,7 +86,7 @@ const updateProductById = async (productId, product) => {
 };
 
 const deleteProduct = async (productId) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool.request().input("ProductId", sql.Int, productId)

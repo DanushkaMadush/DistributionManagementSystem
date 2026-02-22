@@ -1,7 +1,7 @@
-const { getPool, sql } = require("../config/db");
+const { connectDB, sql } = require("../config/db");
 
 const createOrder = async (order, createdBy) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await connectDB();
   const transaction = new sql.Transaction(pool);
 
   try {
@@ -47,7 +47,7 @@ const createOrder = async (order, createdBy) => {
 };
 
 const updateOrder = async (orderId, order, updatedBy) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
   const transaction = new sql.Transaction(pool);
 
   try {
@@ -111,7 +111,7 @@ const updateOrder = async (orderId, order, updatedBy) => {
 };
 
 const getAllOrders = async () => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool.request().query(`
@@ -155,7 +155,7 @@ const getAllOrders = async () => {
 };
 
 const getOrderById = async (orderId) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool.request().input("OrderId", sql.Int, orderId)
@@ -201,7 +201,7 @@ const getOrderById = async (orderId) => {
 };
 
 const getOrdersByCreatedBy = async (createdBy) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool
@@ -248,7 +248,7 @@ const getOrdersByCreatedBy = async (createdBy) => {
 };
 
 const getOrdersByRetailerId = async (retailerId) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool.request().input("RetailerId", sql.Int, retailerId)
@@ -294,7 +294,7 @@ const getOrdersByRetailerId = async (retailerId) => {
 };
 
 const getOrdersByRDCId = async (rdcId) => {
-  const pool = await getPool(process.env.CENTRAL_DB);
+  const pool = await await connectDB();
 
   try {
     const result = await pool.request().input("RDCId", sql.Int, rdcId).query(`

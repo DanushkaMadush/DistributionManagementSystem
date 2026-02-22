@@ -1,8 +1,8 @@
-const { getPool, sql } = require("../config/db");
+const { connectDB, sql } = require("../config/db");
 const { v4: uuidv4 } = require("uuid");
 
 const createUser = async (user) => {
-  const pool = await getPool(process.env.USER_DB);
+  const pool = await connectDB();
 
   const employeeId = `EMP-${uuidv4()}`;
 
