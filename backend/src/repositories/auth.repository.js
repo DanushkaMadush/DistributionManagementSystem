@@ -12,9 +12,9 @@ const getUserWithRolesByEmail = async (email) => {
         u.Email,
         u.PasswordHash,
         r.RoleName
-      FROM Users u
-      JOIN UserRoles ur ON u.UserId = ur.UserId
-      JOIN Roles r ON ur.RoleId = r.RoleId
+      FROM dbo.Users u
+      JOIN dbo.UserRoles ur ON u.UserId = ur.UserId
+      JOIN dbo.Roles r ON ur.RoleId = r.RoleId
       WHERE u.Email = @Email
     `);
 
